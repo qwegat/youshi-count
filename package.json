@@ -1,0 +1,96 @@
+{
+  "name": "youshi-count",
+  "displayName": "Youshi Count",
+  "description": "Display the number of characters in a text file in terms of manuscript paper",
+  "version": "0.0.1",
+  "publisher": "qwegat",
+  "engines": {
+    "vscode": "^1.86.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:markdown",
+    "onLanguage:plaintext",
+    "onLanguage:novel"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Youshi Count",
+      "properties": {
+        "youshicount.verticalSize": {
+          "type": "number",
+          "default": 20,
+          "description": "使用する原稿用紙における1行あたりの文字数"
+        },
+        "youshicount.horizontalSize": {
+          "type": "number",
+          "default": 20,
+          "description": "使用する原稿用紙における1枚あたりの行数"
+        },
+        "youshicount.enableRuby": {
+          "type": "boolean",
+          "default": true,
+          "description": "`対象《ルビ》`および`|対象《ルビ》`記法によるルビ振りを許容するか"
+        },
+        "youshicount.enableSidePoint": {
+          "type": "boolean",
+          "default": true,
+          "description": "`《《対象》》`表記による傍点振りを許容するか"
+        },
+        "shortenNumber": {
+          "type": "boolean",
+          "default": false,
+          "description": "連続する半角数字を1マスあたり2文字に詰めるか"
+        },
+        "shortenAlphabet": {
+          "type": "boolean",
+          "default": false,
+          "description": "連続する半角アルファベットを1マスあたり2文字に詰めるか"
+        },
+        "fillEOF": {
+          "type": "boolean",
+          "default": true,
+          "description": "行末に来る`」』）。、`などの記号を詰めるか"
+        },
+        "fillBracket": {
+          "type": "boolean",
+          "default": true,
+          "description": "句読点(`、。`)と連続する閉じ括弧(`」』）`)を詰めるか"
+        },
+        "pageChangeSymbol": {
+          "type": "string",
+          "default": "===",
+          "description": "入力された内容のみの一行を改ページ記号に変換する(空欄の場合変換されない)"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.86.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@typescript-eslint/eslint-plugin": "^7.0.2",
+    "@typescript-eslint/parser": "^7.0.2",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3",
+    "ts-loader": "^9.5.1",
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4",
+    "@vscode/test-cli": "^0.0.6",
+    "@vscode/test-electron": "^2.3.9"
+  }
+}
