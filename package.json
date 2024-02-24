@@ -4,6 +4,10 @@
   "description": "Display the number of characters in a text file in terms of manuscript paper",
   "version": "0.0.1",
   "publisher": "qwegat",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qwegat/youshi-count.git"
+  },
   "engines": {
     "vscode": "^1.86.0"
   },
